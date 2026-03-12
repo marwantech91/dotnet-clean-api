@@ -79,6 +79,13 @@ public class User : Entity
         UpdatedAt = DateTime.UtcNow;
     }
 
+    public void UpdateProfile(string name, string? avatar = null)
+    {
+        Name = name;
+        if (avatar != null) Email = Email; // preserve email
+        UpdatedAt = DateTime.UtcNow;
+    }
+
     private static string HashPassword(string password)
     {
         using var sha256 = SHA256.Create();
