@@ -79,10 +79,18 @@ public class User : Entity
         UpdatedAt = DateTime.UtcNow;
     }
 
-    public void UpdateProfile(string name, string? avatar = null)
+    public void UpdateEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            throw new ArgumentException("Email cannot be empty");
+
+        Email = email.ToLowerInvariant();
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void UpdateProfile(string name)
     {
         Name = name;
-        if (avatar != null) Email = Email; // preserve email
         UpdatedAt = DateTime.UtcNow;
     }
 
