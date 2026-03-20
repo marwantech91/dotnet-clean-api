@@ -132,6 +132,12 @@ public class Product : Entity
 
     public void UpdateDetails(string name, string description, decimal price)
     {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Product name cannot be empty");
+
+        if (price < 0)
+            throw new ArgumentException("Price cannot be negative");
+
         Name = name;
         Description = description;
         Price = price;
