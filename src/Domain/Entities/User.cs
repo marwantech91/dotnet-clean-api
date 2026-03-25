@@ -164,4 +164,9 @@ public class Product : Entity
         Stock -= quantity;
         UpdatedAt = DateTime.UtcNow;
     }
+
+    public bool HasSufficientStock(int quantity)
+    {
+        return quantity > 0 && Stock >= quantity;
+    }
 }
