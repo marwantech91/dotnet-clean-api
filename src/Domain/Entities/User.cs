@@ -169,4 +169,13 @@ public class Product : Entity
     {
         return quantity > 0 && Stock >= quantity;
     }
+
+    public void ApplyDiscount(decimal percentage)
+    {
+        if (percentage <= 0 || percentage > 100)
+            throw new ArgumentException("Discount must be between 0 and 100");
+
+        Price -= Price * (percentage / 100m);
+        UpdatedAt = DateTime.UtcNow;
+    }
 }
